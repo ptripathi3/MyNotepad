@@ -1,9 +1,12 @@
 package com.learning.mynotepad;
 
+import com.learning.mynotepad.manager.MyNoteManager;
 import com.learning.mynotepad.resources.MyNotepadResource;
 import io.dropwizard.Application;
-import io.dropwizard.Configuration;
 import io.dropwizard.setup.Environment;
+import org.skife.jdbi.v2.DBI;
+
+import javax.sql.DataSource;
 
 public class MyNotepadApplication extends Application<MyNotepadConfiguration> {
 
@@ -13,8 +16,10 @@ public class MyNotepadApplication extends Application<MyNotepadConfiguration> {
 
 
     public void run(MyNotepadConfiguration myNotepadConfiguration, Environment environment) throws Exception {
-        final MyNotepadResource myNotepadResource = new MyNotepadResource();
-        environment.jersey().register(myNotepadResource);
+        final DataSource dataSource =
+                myNotepadConfiguration.getDataSourceFactory().build(environment.metrics(), "sql");
+        DBI dbi = new DBI(dataSource);
+        environment.jersey().register( new MyNotepadResource(dbi.onDemand(MyNoteManager.class)));
     }
 
 //    public void run(Configuration configuration, Environment environment) throws Exception {
