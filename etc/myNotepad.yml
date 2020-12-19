@@ -1,0 +1,8 @@
+server:
+  rootPath: /*
+  applicationConnectors:
+    - type: http
+      port: 8989
+  adminConnectors:
+    - type: http
+      port: 8990
