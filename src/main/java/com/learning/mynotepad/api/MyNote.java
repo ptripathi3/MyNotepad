@@ -4,13 +4,18 @@ package com.learning.mynotepad.api;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
+import javax.validation.constraints.NotNull;
+
+//@JsonInclude(JsonInclude.Include.NON_NULL)
 public class MyNote {
 
-    @JsonProperty
+    @NotNull
+    @JsonProperty("title")
     String title;
-    @JsonProperty
+    @NotNull
+    @JsonProperty("content")
     String content;
+
 
     public String getTitle() {
         return title;
@@ -23,14 +28,17 @@ public class MyNote {
         this.content = content;
     }
 
+    @JsonProperty
     public void setTitle(String title) {
         this.title = title;
     }
 
+    @JsonProperty
     public void setContent(String content) {
         this.content = content;
     }
 
+    @JsonProperty
     public String getContent() {
         return content;
     }

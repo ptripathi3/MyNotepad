@@ -16,7 +16,7 @@ logging:
       timeZone: IST
 
 database :
-  driverClass: com.mysql.jdbc.Driver
+  driverClass: com.mysql.cj.jdbc.Driver
   user: root
   password: test
   url: jdbc:mysql://localhost:3306/mynotepad
@@ -33,19 +33,3 @@ database :
   checkConnectionWhileIdle: true
   evictionInterval: 10s
   minIdleTime: 1 minute
-
-#
-#  database:
-#    driverClass: com.mysql.cj.jdbc.Driver
-#    url: jdbc:mysql://localhost:3306/softwaredevelopercentral?autoReconnect=true&useSSL=false
-#    user: root
-#    password:
-#    maxWaitForConnection: 1s
-#    validationQuery: "SELECT 1"
-#    validationQueryTimeout: 3s
-#    minSize: 8
-#    maxSize: 32
-#    checkConnectionWhileIdle: false
-#    evictionInterval: 10s
-#    minIdleTime: 1 minute
-#    checkConnectionOnBorrow: true

@@ -2,7 +2,6 @@ package com.learning.mynotepad.resources;
 
 import com.learning.mynotepad.api.MyNote;
 import com.learning.mynotepad.manager.MyNoteManager;
-import io.swagger.annotations.ApiParam;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -24,8 +23,7 @@ public class MyNotepadResource {
 
     @POST
     @Path("/Create")
-    public Response createNote(@ApiParam @NotNull @Valid MyNote note){
-//        MyNote note =  new MyNote("Hello","Good day");
+    public Response createNote(@NotNull @Valid MyNote note){
         myNoteManager.createNote(note);
         return Response.ok().build();
     }
