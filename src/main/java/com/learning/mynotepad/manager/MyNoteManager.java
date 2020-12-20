@@ -11,7 +11,19 @@ public abstract class MyNoteManager {
 
     public void createNote(MyNote note) {
         System.out.println("Function Reached");
-        myNoteDAO().create(note);
+        myNoteDAO().createNote(note);
         System.out.println("Function Reached");
+    }
+
+    public MyNote getNote(String title){
+        return myNoteDAO().getNote(title);
+    }
+
+    public void updateNote(String title, MyNote note){
+        myNoteDAO().updateNote(title,note);
+    }
+
+    public void deleteNote(String title) {
+        myNoteDAO().deleteNote(title);
     }
 }

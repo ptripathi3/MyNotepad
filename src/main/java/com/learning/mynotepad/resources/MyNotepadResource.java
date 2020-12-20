@@ -9,7 +9,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Path("/note")
+@Path("/MyNote")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class MyNotepadResource {
@@ -28,21 +28,28 @@ public class MyNotepadResource {
         return Response.ok().build();
     }
 
-    @GET
-    @Path("/hello")
-    public Response hello(){
+    @PUT
+    @Path("/Update")
+    public Response updateNote(@QueryParam("title") @NotNull String title,@NotNull @Valid MyNote note ){
         System.out.println("Here");
+        myNoteManager.updateNote(title,note);
         return Response.ok().build();
-
     }
 
+    @DELETE
+    @Path("/Delete")
+    public Response deleteNote(@QueryParam("title") @NotNull String title){
+        System.out.println("Going to delete" + title);
+        myNoteManager.deleteNote(title);
+        return Response.accepted().build();
+    }
 
     @GET
     @Path("/Read")
-    public void readNote(@QueryParam("Title") String title){
+    public MyNote readNote(@QueryParam("title") String title){
         System.out.println("??????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????");
         System.out.println("Title : " + title);
-        MyNote note =  new MyNote("Hello","Good day");
-        myNoteManager.createNote(note);
+        MyNote note = myNoteManager.getNote(title);
+        return note;
     }
 }
