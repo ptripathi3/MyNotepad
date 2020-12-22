@@ -11,7 +11,7 @@ public class MyNoteMapper implements ResultSetMapper<MyNote> {
     public MyNote map(int i, ResultSet resultSet, StatementContext statementContext) throws SQLException {
         System.out.println(resultSet.getString("title"));
         System.out.println(resultSet.getString("content"));
-        MyNote note = new MyNote(resultSet.getString("title"), resultSet.getString("content") );
+        MyNote note = new MyNote(resultSet.getString("title"), resultSet.getString("content"));
         return note;
     }
 }

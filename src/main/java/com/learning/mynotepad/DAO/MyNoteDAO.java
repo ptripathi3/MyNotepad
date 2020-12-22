@@ -8,6 +8,8 @@ import org.skife.jdbi.v2.sqlobject.SqlQuery;
 import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 
+import java.util.List;
+
 
 @RegisterMapper(MyNoteMapper.class)
 public interface MyNoteDAO {
@@ -18,9 +20,15 @@ public interface MyNoteDAO {
     @SqlQuery("select * from note where title = :title ;")
     MyNote getNote(@Bind("title") String title);
 
-    @SqlUpdate("update note set title = :note.title , content = :note.content where title = :title;")
+    @SqlUpdate("update note set title = :note.title , content = :note.content where title = :title ;")
     void updateNote(@Bind("title") String title,@BindBean("note") MyNote note);
 
     @SqlUpdate("delete from note where title = :title ;")
     void deleteNote(@Bind("title") String title);
+
+    @SqlQuery("Select * from note where title like :keyWord or content like :keyWord ;")
+    List<MyNote> searchNote(@Bind("keyWord") String keyWord);
+
+    @SqlQuery("select * from note;")
+    List<MyNote> getAllNotes();
 }
