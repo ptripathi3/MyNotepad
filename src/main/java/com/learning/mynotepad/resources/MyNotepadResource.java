@@ -2,6 +2,7 @@ package com.learning.mynotepad.resources;
 
 import com.learning.mynotepad.api.MyNote;
 import com.learning.mynotepad.manager.MyNoteManager;
+import io.swagger.annotations.Api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,6 +14,7 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/MyNote")
+@Api("MyNote")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class MyNotepadResource {

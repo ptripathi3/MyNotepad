@@ -15,6 +15,14 @@ logging:
       threshold: ALL
       timeZone: IST
 
+
+swagger:
+    resourcePackage: com.learning.mynotepad.resources
+    title: Swagger Documentation for MyNotepad
+    version: 1.0
+    description: Sample Project
+    contact: pragya03099@gmail.com
+
 database :
   driverClass: com.mysql.cj.jdbc.Driver
   user: root
