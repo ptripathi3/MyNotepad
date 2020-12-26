@@ -30,7 +30,7 @@ public class MyNotepadResource {
     @POST
     @Path("/Create")
     public Response createNote(@NotNull @Valid MyNote note){
-        LOGGER.info("Received Create request for Noote {}",note);
+        LOGGER.info("Received Create request for Note {}",note);
         myNoteManager.createNote(note);
         return Response.ok().build();
     }
