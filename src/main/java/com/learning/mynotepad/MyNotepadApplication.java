@@ -21,7 +21,7 @@ public class MyNotepadApplication extends Application<MyNotepadConfiguration> {
         final DataSource dataSource =
                 myNotepadConfiguration.getDataSourceFactory().build(environment.metrics(), "sql");
         DBI dbi = new DBI(dataSource);
-        environment.jersey().register(new MyNotepadResource(dbi.open(MyNoteManager.class)));
+        environment.jersey().register(new MyNotepadResource(dbi.onDemand(MyNoteManager.class)));
     }
 
     @Override
